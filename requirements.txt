@@ -1,0 +1,5 @@
+plotly
+supabase
+extra_streamlit_components
+streamlit_javascript
+PyJWT
