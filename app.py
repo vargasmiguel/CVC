@@ -304,10 +304,10 @@ if authentication_status:
             st.warning("⚠️ Faltó el número de cédula de quién firma. Intente de nuevo ⚠️")
 
         else:
-            data,count=resul,1
-            if len(data.keys())>1:
+            #data,count=resul,1
+            #if len(data.keys())>1:
             ## ENVIAR A SUPABASE
-                st.write(resul)
+                #st.write(resul)
             data,count = supabase.table("cvc").insert(resul).execute()
             if data[1][0]:
                 d=data[1][0]
