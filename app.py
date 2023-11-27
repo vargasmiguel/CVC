@@ -96,46 +96,46 @@ clean={
   "Vigencia-O": 2020,
   "Recibe la visita": "",
   "Propietario-O": "---",
-  "SDMA-N-Cantidad de semilla entregada en kilos": 0,
-  "SDMA-N-Cuántos kilos sembró": 0,
-  "SDMA-N-Cuántas cosechas lleva": 0,
-  "SDMA-N-Cuántos kilos ha cosechado": 0,
+  "SDMA-N-Cantidad de semilla entregada en kilos": None,
+  "SDMA-N-Cuántos kilos sembró": None,
+  "SDMA-N-Cuántas cosechas lleva": None,
+  "SDMA-N-Cuántos kilos ha cosechado": None,
   "SDMA-Cómo fue el desarrollo": "",
-  "SDF-N-Cantidad de semilla entregada en kilos": 0,
-  "SDF-N-Cuántos kilos sembró": 0,
-  "SDF-N-Cuántas cosechas lleva": 0,
-  "SDF-N-Cuántos kilos ha cosechado": 0,
-  "EBDF-N-Cantidad de estacas de Botón de oro": 0,
-  "EBDF-N-Cuántas estacas de Nacedero": 0,
-  "EBDF-N-Cuántas estacas de Matarratón": 0,
-  "EBDF-N-Cuántas estacas se desarrollaron": 0,
-  "EBDF-N-Cuántas estacas se perdieron": 0,
+  "SDF-N-Cantidad de semilla entregada en kilos": None,
+  "SDF-N-Cuántos kilos sembró": None,
+  "SDF-N-Cuántas cosechas lleva": None,
+  "SDF-N-Cuántos kilos ha cosechado": None,
+  "EBDF-N-Cantidad de estacas de Botón de oro": None,
+  "EBDF-N-Cuántas estacas de Nacedero": None,
+  "EBDF-N-Cuántas estacas de Matarratón": None,
+  "EBDF-N-Cuántas estacas se desarrollaron": None,
+  "EBDF-N-Cuántas estacas se perdieron": None,
   "EBDF-O-Cuál es el estado actual del banco de forraje": "---",
   "EBDF-O-Continúa su propagación": "---",
-  "AF-N-Cantidad de tipo Injerto": 0,
-  "AF-N-Cantidad de tipo Nativos": 0,
-  "AF-N-Cuántos arboles se desarrollaron": 0,
+  "AF-N-Cantidad de tipo Injerto": None,
+  "AF-N-Cantidad de tipo Nativos": None,
+  "AF-N-Cuántos arboles se desarrollaron": None,
   "AF-O-En qué estado están": "---",
-  "AF-N-Número de árboles vivos": 0,
-  "CDP-N-Cantidad sembrada de Plátano": 0,
-  "CDP-N-Cuántos racimos de plátano ha cosechado": 0,
-  "CDP-N-Cuántos colinos de plátano plantaron": 0,
-  "CDP-N-Cuántos colinos de plátano murieron": 0,
-  "CDB-N-Cantidad sembrada de Banano": 0,
-  "CDB-N-Cuántos racimos de banano ha cosechado": 0,
-  "CDB-N-Cuántos colinos de banano plantaron": 0,
-  "CDB-N-Cuántos colinos de banano murieron": 0,
-  "CDG-N-Cantidad sembrada de Guayabo": 0,
-  "CDG-N-Cuántos racimos de guayabo ha cosechado": 0,
-  "CDG-N-Cuántos colinos de guayabo plantaron": 0,
-  "CDG-N-Cuántos colinos de guayabo murieron": 0,
-  "SDSDH-N-Cantidad de sobres entregados": 0,
-  "BDG-N-Bandejas de germinación entregadas": 0,
+  "AF-N-Número de árboles vivos": None,
+  "CDP-N-Cantidad sembrada de Plátano": None,
+  "CDP-N-Cuántos racimos de plátano ha cosechado": None,
+  "CDP-N-Cuántos colinos de plátano plantaron": None,
+  "CDP-N-Cuántos colinos de plátano murieron": None,
+  "CDB-N-Cantidad sembrada de Banano": None,
+  "CDB-N-Cuántos racimos de banano ha cosechado": None,
+  "CDB-N-Cuántos colinos de banano plantaron": None,
+  "CDB-N-Cuántos colinos de banano murieron": None,
+  "CDG-N-Cantidad sembrada de Guayabo": None,
+  "CDG-N-Cuántos racimos de guayabo ha cosechado": None,
+  "CDG-N-Cuántos colinos de guayabo plantaron": None,
+  "CDG-N-Cuántos colinos de guayabo murieron": None,
+  "SDSDH-N-Cantidad de sobres entregados": None,
+  "BDG-N-Bandejas de germinación entregadas": None,
   "FM-O-Cómo ha sido el funcionamiento": "---",
-  "PV-N-Cantidad entregada de pasto vetiver": 0,
-  "C-N-Cuántas láminas de zinc ha utilizado en la compostera": 0,
-  "C-N-Cuántos bultos de cemento ha utilizado en la compostera": 0,
-  "C-N-Cuánto amarre ha utilizado en la compostera": 0,
+  "PV-N-Cantidad entregada de pasto vetiver": None,
+  "C-N-Cuántas láminas de zinc ha utilizado en la compostera": None,
+  "C-N-Cuántos bultos de cemento ha utilizado en la compostera": None,
+  "C-N-Cuánto amarre ha utilizado en la compostera": None,
   "Ha entregado semillas a vecino-O": "---",
   "Nombre del Vecino 1": "",
   "Nombre del Vecino 2": "",
@@ -148,7 +148,7 @@ clean={
   "Observaciones": "",
   "Fecha de Firma": hoy,
   "Nombre de quién firma": "",
-  "Cédula de quién firma": 0
+  "Cédula de quién firma": None
 }
 
 sig={}
@@ -248,7 +248,7 @@ if authentication_status:
             cantidades=data[insu]["cantidad"]
             with cols[1]:
                 for can in cantidades:
-                    resul[(siglas(insu)+"-N-"+can).strip()]=st.number_input(can,value=0.0, key=siglas(insu)+"-N-"+can)
+                    resul[(siglas(insu)+"-N-"+can).strip()]=st.number_input(can,value=None, key=siglas(insu)+"-N-"+can)
         if "observación" in data[insu]:
             observaciones=data[insu]["observación"]
             with cols[2]:
@@ -258,7 +258,7 @@ if authentication_status:
                     if obs["tipo"] == "text":
                         resul[(siglas(insu)+"-"+obs["texto"]).strip()]=st.text_input(obs["texto"], key=siglas(insu)+"-"+obs["texto"])
                     if obs["tipo"] == "numeric":
-                        resul[(siglas(insu)+"-N-"+obs["texto"]).strip()]=st.number_input(obs["texto"], value=0.0, key=siglas(insu)+"-N-"+obs["texto"])
+                        resul[(siglas(insu)+"-N-"+obs["texto"]).strip()]=st.number_input(obs["texto"], value=None, key=siglas(insu)+"-N-"+obs["texto"])
         st.markdown("---")
 
 
@@ -285,7 +285,7 @@ if authentication_status:
     with firma[1]:    
         resul["Nombre de quién firma"]=st.text_input("Nombre de quién firma", key="Nombre de quién firma")
     with firma[2]:    
-        resul["Cédula de quién firma"]=st.number_input("Cédula de quién firma",step=1, key="Cédula de quién firma")
+        resul["Cédula de quién firma"]=st.number_input("Cédula de quién firma", value=None, step=1, key="Cédula de quién firma")
 
 
 
@@ -330,6 +330,15 @@ if st.session_state.disabled == True:
 
 elif authentication_status is False:
     st.error("Error, usuario y/o contraseña invalidos")
+
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 
 
 
