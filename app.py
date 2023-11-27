@@ -90,7 +90,7 @@ clean={
   "Municipio": "",
   "Cuenca": "",
   "Vereda": "",
-  "DAR": "",
+  "DAR": "NORTE",
   "Finca": "",
   "Beneficiario": "",
   "Vigencia-O": 2020,
@@ -212,7 +212,7 @@ if authentication_status:
             
 
     with infoA[2]:
-        resul["DAR"]=st.text_input("DAR:", key="DAR")
+        resul["DAR"]=st.text_input("DAR:", value="NORTE", key="DAR")
         resul["Finca"]=st.text_input("Finca:", key="Finca")
 
 
