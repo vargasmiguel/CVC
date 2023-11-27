@@ -3,7 +3,7 @@ from datetime import datetime
 from extra_streamlit_components import CookieManager
 from supabase import create_client, Client
 from time import sleep
-from streamlit_javascript import st_javascript
+#from streamlit_javascript import st_javascript
 import jwt
 
 class Authenticate:
@@ -43,23 +43,23 @@ class Authenticate:
         """
         Checks the validity of the reauthentication cookie.
         """
-        url = st_javascript("await fetch('').then(r => window.parent.location.href)")
-        try:
-            urlli=url.split("#access_token=")
-        except:
-            urlli=[]
-        if len(urlli)>1:
-            #urlold=urlli[0]
-            try:
-                self.token=urlli[1].split("&")[0]
-                self.refresh=urlli[1].split("refresh_token=")[1].split("&")[0]
-                sleep(0.01)
-                self.cookie_manager.set(self.cookie_name, self.token, key="token")
-                sleep(0.01)
-                self.cookie_manager.set("provider", self.refresh, key="refresh")
-                st.session_state['provider'] = True
-            except:
-                st.session_state['provider'] = False
+        # url = st_javascript("await fetch('').then(r => window.parent.location.href)")
+        # try:
+        #     urlli=url.split("#access_token=")
+        # except:
+        #     urlli=[]
+        # if len(urlli)>1:
+        #     #urlold=urlli[0]
+        #     try:
+        #         self.token=urlli[1].split("&")[0]
+        #         self.refresh=urlli[1].split("refresh_token=")[1].split("&")[0]
+        #         sleep(0.01)
+        #         self.cookie_manager.set(self.cookie_name, self.token, key="token")
+        #         sleep(0.01)
+        #         self.cookie_manager.set("provider", self.refresh, key="refresh")
+        #         st.session_state['provider'] = True
+        #     except:
+        #         st.session_state['provider'] = False
         self.token = self.cookie_manager.get(self.cookie_name)
         if self.token is not None:
             self.token = jwt.decode(self.token, options={"verify_signature": False})
@@ -113,11 +113,12 @@ class Authenticate:
             raise ValueError("Location must be one of 'main' or 'sidebar'")
 
         if location == 'main':
+            c = st.columns([3,1,3])
+            with c[1]:
+                st.image("logo-cvc.png",width=200)
             place=st.empty()
-            place2=st.empty()
         elif location == 'sidebar':
             place=st.sidebar.empty()
-            place2=st.sidebar.empty()
             
         self._check_cookie()
         if not st.session_state['authentication_status']:
@@ -128,36 +129,36 @@ class Authenticate:
                 st.session_state['email'] = self.email
                 self.password = login_form.text_input('Contraseña', type='password')
 
-                if login_form.form_submit_button('Ingresar'):
+                if login_form.form_submit_button('Ingresar', type="primary"):
                     self._check_credentials(self.email,self.password)
                 
-                if len(providers)>0:
-                    with place2.container():
-                        st.markdown(f"""<p style='display: block; text-align: center;'> O continúa con: </p>""", unsafe_allow_html=True)
-                        namesp={"github":"GitHub", "google":"Google", "facebook":"Facebook", "linkedin":"LinkedIn"}
-                        imagsp={"github":"https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg", 
-                                "google":"https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg", 
-                                "facebook":"https://upload.wikimedia.org/wikipedia/commons/f/fb/Facebook_icon_2013.svg", 
-                                "linkedin":"https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"}
-                        cols=st.columns(len(providers))
-                        for i in range(len(providers)):
-                            with cols[i]:
-                                p=providers[i]
-                                datap = self.supabase.auth.sign_in_with_oauth({"provider": p})
-                                p_url=datap.url
-                                st.markdown(f"""<a style='display: block; text-align: center;' href="{p_url}" target="_self"><img src="{imagsp[p]}" height="15%" width="15%" /></a>""", unsafe_allow_html=True)
+                # if len(providers)>0:
+                #     with place2.container():
+                #         st.markdown(f"""<p style='display: block; text-align: center;'> O continúa con: </p>""", unsafe_allow_html=True)
+                #         #namesp={"github":"GitHub", "google":"Google", "facebook":"Facebook", "linkedin":"LinkedIn"}
+                #         imagsp={"github":"https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg", 
+                #                 "google":"https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg", 
+                #                 "facebook":"https://upload.wikimedia.org/wikipedia/commons/f/fb/Facebook_icon_2013.svg", 
+                #                 "linkedin":"https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"}
+                #         cols=st.columns(len(providers))
+                #         for i in range(len(providers)):
+                #             with cols[i]:
+                #                 p=providers[i]
+                #                 datap = self.supabase.auth.sign_in_with_oauth({"provider": p})
+                #                 p_url=datap.url
+                #                 st.markdown(f"""<a style='display: block; text-align: center;' href="{p_url}" target="_self"><img src="{imagsp[p]}" height="15%" width="15%" /></a>""", unsafe_allow_html=True)
 
-            if st.session_state['provider']:
-                url = st_javascript("await fetch('').then(r => window.parent.location.href)", key="segurl")
-                try:
-                    urlli=url.split("#access_token=")
-                except:
-                    urlli=[]
-                if len(urlli)>1:
-                    urlold=urlli[0]
-                    with place.container():
-                        st.write("Te has logueado satisfactoriamente con el proveedor externo")
-                        st.markdown(f'<a href="{urlold}" target="_self">Continuar</a>', unsafe_allow_html=True)
+            # if st.session_state['provider']:
+            #     url = st_javascript("await fetch('').then(r => window.parent.location.href)", key="segurl")
+            #     try:
+            #         urlli=url.split("#access_token=")
+            #     except:
+            #         urlli=[]
+            #     if len(urlli)>1:
+            #         urlold=urlli[0]
+            #         with place.container():
+            #             st.write("Te has logueado satisfactoriamente con el proveedor externo")
+            #             st.markdown(f'<a href="{urlold}" target="_self">Continuar</a>', unsafe_allow_html=True)
 
         return st.session_state['authentication_status'], st.session_state['email']
 
