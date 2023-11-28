@@ -95,7 +95,7 @@ clean={
   "Beneficiario": None,
   "Vigencia-O": 2020,
   "Recibe la visita": None,
-  "Propietario-O": None,
+  "Propietario-O": "---",
   "SDMA-N-Cantidad de semilla entregada en kilos": None,
   "SDMA-N-Cuántos kilos sembró": None,
   "SDMA-N-Cuántas cosechas lleva": None,
