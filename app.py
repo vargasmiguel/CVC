@@ -147,7 +147,7 @@ clean={
   "Intención de articularse a Proceso Educativo-O": "---",
   "Observaciones": "",
   "Fecha de Firma": hoy,
-  "Nombre de quién firma": "",
+  "Nombre de quién firma": None,
   "Cédula de quién firma": None
 }
 
@@ -293,12 +293,12 @@ if authentication_status:
     submitted = st.button("ENVIAR",type='primary',use_container_width=True, on_click=disable ,disabled=st.session_state.disabled)
 
     if submitted:
-        if resul["Nombre de quién firma"] == "":
+        if resul["Nombre de quién firma"] == None:
             st.session_state.error = True
             titulo(6, "⚠️ ¡Cuidado! ⚠️")
             st.warning("⚠️ Faltó el nombre de quién firma. Intente de nuevo ⚠️")
         
-        if resul["Cédula de quién firma"] == 0:
+        if resul["Cédula de quién firma"] == None:
             st.session_state.error = True
             titulo(6, "⚠️ ¡Cuidado! ⚠️")
             st.warning("⚠️ Faltó el número de cédula de quién firma. Intente de nuevo ⚠️")
