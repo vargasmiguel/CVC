@@ -27,134 +27,257 @@ def siglas(x:str):
         r=r+i[0]
     return r
 
-
+data_ind={'CONSERVACIÓN DE SUELOS': {'descripción': ['Al menos 3 prácticas de conservación'],
+  'observación': [{'texto': 'Uso de materia orgánica',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Trinchos; barreras; para evitar la pérdida de suelo',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Suelo cubierto durante al menos 10 meses del año',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Trazado con curvas a nivel',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']}]},
+ 'CONSERVACIÓN Y PROTECCIÓN DE LA BIODIVERSIDAD': {'descripción': ['Al menos 3 prácticas de conservación.'],
+  'observación': [{'texto': 'Practica la caza',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Se tienen barreras vivas alrededor de la finca',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Siembra árboles como hábitat para las aves',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Tienen corredores biológicos en la finca',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']}]},
+ 'SEGURIDAD ALIMENTARIA': {'descripción': ['Productos agropecuarios generado para el autoconsumo.'],
+  'observación': [{'texto': 'Productos',
+    'tipo': 'multi',
+    'opciones': ['Ninguno', 'Frutas', 'Verduras', 'Hortalizas', 'Legumbres', 'Maíz', 'Ganado vacuno', 'Ganado porcino', 'Apicultura', 'Avicola']}]},
+ 'USO DE BIOINSUMOS': {'descripción': ['Prepara al menos 3 bioinsumos para uso en la finca.'],
+  'observación': [{'texto': 'Biofertilizantes',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Abonos orgánicos', 'tipo': 'options', 'opciones': ['Si', 'No']},
+   {'texto': 'Uso de microorganismos de montaña',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Biocontroladores',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']}]},
+ 'AGUA': {'descripción': ['Al menos 3 prácticas de conservación'],
+  'observación': [{'texto': 'Las fuentes de agua se encuentran protegidas',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Se genera vertimientos propios en la finca',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Tiene tratamiento de aguas residuales en la finca',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Cosecha de agua en la finca.',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']}]},
+ 'USO DE AGROQUÍMICOS': {'descripción': ['Cultivos que dependen de agroquímicos'],
+  'observación': [{'texto': 'Usa agroquímicos',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'De manera permanente',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'De manera esporádica y como último recurso',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']}]},
+ 'PARTICIPACIÓN FAMILIAR': {'descripción': ['Participación de los integrantes de la familia en las labores de la finca y capacitaciones'],
+  'observación': [{'texto': 'Participa solo la propietaria (o)',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Participa más de un integrante de la familia',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']},
+   {'texto': 'Participa toda la familia',
+    'tipo': 'options',
+    'opciones': ['Si', 'No']}]}}
 
 data={'SEMILLA DE MAÍZ AMARILLO': {'cantidad': ['Cantidad de semilla entregada en kilos'],
   'observación': [{'texto': 'Cuántos kilos sembró', 'tipo': 'numeric'},
    {'texto': 'Cuántas cosechas lleva', 'tipo': 'numeric'},
    {'texto': 'Cuántos kilos ha cosechado', 'tipo': 'numeric'},
-   {'texto': 'Cómo fue el desarrollo', 'tipo': 'text'}]},
+   {'texto': 'Cómo fue el desarrollo', 'tipo': 'options',
+    'opciones': ['Bueno', 'Regular', 'Malo']},
+   {'texto': 'Qué otra variedad de maíz tiene', 'tipo': 'multi',
+    'opciones': ['Ninguno', 'Blanco', 'Otro']}]},
  'SEMILLA DE FRÍJOL': {'cantidad': ['Cantidad de semilla entregada en kilos'],
   'observación': [{'texto': 'Cuántos kilos sembró', 'tipo': 'numeric'},
    {'texto': 'Cuántas cosechas lleva', 'tipo': 'numeric'},
-   {'texto': 'Cuántos kilos ha cosechado', 'tipo': 'numeric'}]},
+   {'texto': 'Cuántos kilos ha cosechado', 'tipo': 'numeric'},
+   {'texto': 'Cómo fue el desarrollo', 'tipo': 'options',
+    'opciones': ['Bueno', 'Regular', 'Malo']},
+   {'texto': 'Qué otra variedad de fríjol tiene', 'tipo': 'multi',
+    'opciones': ['Ninguno', 'Caupi', 'Bolones', 'Cargamanto', 'Otro']}]},
  'ESTACAS BANCO DE FORRAJE': {'cantidad': ['Cantidad de estacas de Botón de oro',
    'Cuántas estacas de Nacedero',
    'Cuántas estacas de Matarratón'],
-  'observación': [{'texto': 'Cuántas estacas se desarrollaron',
-    'tipo': 'numeric'},
-   {'texto': 'Cuántas estacas se perdieron', 'tipo': 'numeric'},
+  'observación': [
+   {'texto': 'Cuántas estacas sembradas prendieron', 'tipo': 'numeric'},
    {'texto': 'Cuál es el estado actual del banco de forraje', 'tipo': 'options',
-    'opciones': ['---', 'Bueno', 'Regular', 'Malo']},
+    'opciones': ['Bueno', 'Regular', 'Malo']},
    {'texto': 'Continúa su propagación',
     'tipo': 'options',
-    'opciones': ['---', 'Si', 'No']}]},
+    'opciones': ['Si', 'No']}]},
  'ARBOLES FRUTALES': {'cantidad': ['Cantidad de tipo Injerto',
    'Cantidad de tipo Nativos'],
   'observación': [{'texto': 'Cuántos arboles se desarrollaron',
     'tipo': 'numeric'},
    {'texto': 'En qué estado están',
     'tipo': 'options',
-    'opciones': ['---', 'Bueno', 'Regular', 'Malo']},
+    'opciones': [ 'Bueno', 'Regular', 'Malo']},
    {'texto': 'Número de árboles vivos', 'tipo': 'numeric'}]},
  'COLINO DE PLÁTANO': {'cantidad': ['Cantidad sembrada de Plátano'],
-  'observación': [{'texto': 'Cuántos racimos de plátano ha cosechado',
-    'tipo': 'numeric'},
+  'observación': [
    {'texto': 'Cuántos colinos de plátano plantaron', 'tipo': 'numeric'},
    {'texto': 'Cuántos colinos de plátano murieron', 'tipo': 'numeric'}]},
  'COLINO DE BANANO': {'cantidad': ['Cantidad sembrada de Banano'],
-  'observación': [{'texto': 'Cuántos racimos de banano ha cosechado',
-    'tipo': 'numeric'},
+  'observación': [
    {'texto': 'Cuántos colinos de banano plantaron', 'tipo': 'numeric'},
    {'texto': 'Cuántos colinos de banano murieron', 'tipo': 'numeric'}]},
  'COLINO DE GUAYABO': {'cantidad': ['Cantidad sembrada de Guayabo'],
-  'observación': [{'texto': 'Cuántos racimos de guayabo ha cosechado',
-    'tipo': 'numeric'},
+  'observación': [
    {'texto': 'Cuántos colinos de guayabo plantaron', 'tipo': 'numeric'},
    {'texto': 'Cuántos colinos de guayabo murieron', 'tipo': 'numeric'}]},
- 'SOBRE DE SEMILLAS DE HORTALIZAS': {'observación': [{'texto': 'Cantidad de sobres entregados',
-    'tipo': 'numeric'}]},
- 'BANDEJA DE GERMINACIÓN': {'cantidad': ['Bandejas de germinación entregadas']},
- 'FUMIGADORA MANUAL': {'observación': [{'texto': 'Cómo ha sido el funcionamiento',
-    'tipo': 'options',
-    'opciones': ['---', 'Bueno', 'Regular', 'Malo']}]},
- 'PASTO VETIVER': {'cantidad': ['Cantidad entregada de pasto vetiver']},
- 'COMPOSTERA': {'observación':[{'texto': 'Cuántas láminas de zinc ha utilizado en la compostera', 'tipo':'numeric'},
+ 'SOBRE DE SEMILLAS DE HORTALIZAS': {'cantidad': ['Cantidad de sobres entregados'], 
+  'observación': [
+   {'texto': 'Cuántas veces ha sembrado', 'tipo': 'numeric'},
+   {'texto': 'Continúa sembrando', 'tipo': 'options', 'opciones':['Si', 'No']},
+   {'texto': 'Continúa sembrando cada cuanto (meses)','tipo': 'numeric'}]},
+ 'BANDEJA DE GERMINACIÓN': {'cantidad': ['Bandejas de germinación entregadas'],
+  'observación': [
+   {'texto': 'Se ha utilizado la bandeja de germinación', 'tipo': 'options', 'opciones':['Si', 'No']},
+   {'texto': 'En qué estado está', 'tipo': 'options', 'opciones':['Bueno', 'Regular', 'Malo', 'No se utilizó']}]},
+ 'FUMIGADORA MANUAL': {'observación': [{'texto': 'Fumigadora Manual entregada', 'tipo': 'text'},
+   {'texto': 'Fue utilizada con Bioinsumos Orgánicos', 'tipo': 'options', 'opciones':['Si', 'No']},
+   {'texto': 'Cómo ha sido el funcionamiento', 'tipo': 'options', 'opciones': [ 'Bueno', 'Regular', 'Malo']}]},
+ 'PASTO VETIVER': {'cantidad': ['Cantidad entregada de pasto vetiver'],
+   'observación': [{'texto': 'Se implementó la siembra', 'tipo': 'options', 'opciones':['Si', 'No']},
+   {'texto': 'Se desarrolló bien en el campo', 'tipo': 'options', 'opciones':['Si', 'No']},
+   {'texto': 'Qué manejo le ha dado', 'tipo': 'text'}]},
+ 'COMPOSTERA': {'observación':[{'texto': 'Los materiales fueron utilizados para', 'tipo':'options','opciones': ['Construir compostera nueva', 'Mejoramiento de compostera existente', 'No se utilizaron en compostera'] },
+     {'texto': 'Cuántas láminas de zinc ha utilizado en la compostera', 'tipo':'numeric'},
                                {'texto': 'Cuántos bultos de cemento ha utilizado en la compostera', 'tipo':'numeric'},
-                               {'texto': 'Cuánto amarre ha utilizado en la compostera', 'tipo':'numeric'}]}}
+                               {'texto': 'Cuánto amarre ha utilizado en la compostera', 'tipo':'numeric'}]},
+ 'ABONO ORGÁNICO': {'cantidad': ['Cantidad entregada de abonos orgánicos en kilos'],
+    'observación':[{'texto': 'Qué cantidad ha utilizado', 'tipo':'numeric'}]}}
 
 hoy=datetime.today()
 
 clean={
-  "Fecha": hoy,
-  "Municipio": None,
-  "Cuenca": None,
-  "Vereda": None,
-  "DAR": "NORTE",
-  "Finca": None,
-  "Beneficiario": None,
-  "Vigencia-O": 2020,
-  "Recibe la visita": None,
-  "Propietario-O": "---",
-  "SDMA-N-Cantidad de semilla entregada en kilos": None,
-  "SDMA-N-Cuántos kilos sembró": None,
-  "SDMA-N-Cuántas cosechas lleva": None,
-  "SDMA-N-Cuántos kilos ha cosechado": None,
-  "SDMA-Cómo fue el desarrollo": None,
-  "SDF-N-Cantidad de semilla entregada en kilos": None,
-  "SDF-N-Cuántos kilos sembró": None,
-  "SDF-N-Cuántas cosechas lleva": None,
-  "SDF-N-Cuántos kilos ha cosechado": None,
-  "EBDF-N-Cantidad de estacas de Botón de oro": None,
-  "EBDF-N-Cuántas estacas de Nacedero": None,
-  "EBDF-N-Cuántas estacas de Matarratón": None,
-  "EBDF-N-Cuántas estacas se desarrollaron": None,
-  "EBDF-N-Cuántas estacas se perdieron": None,
-  "EBDF-O-Cuál es el estado actual del banco de forraje": "---",
-  "EBDF-O-Continúa su propagación": "---",
-  "AF-N-Cantidad de tipo Injerto": None,
-  "AF-N-Cantidad de tipo Nativos": None,
-  "AF-N-Cuántos arboles se desarrollaron": None,
-  "AF-O-En qué estado están": "---",
-  "AF-N-Número de árboles vivos": None,
-  "CDP-N-Cantidad sembrada de Plátano": None,
-  "CDP-N-Cuántos racimos de plátano ha cosechado": None,
-  "CDP-N-Cuántos colinos de plátano plantaron": None,
-  "CDP-N-Cuántos colinos de plátano murieron": None,
-  "CDB-N-Cantidad sembrada de Banano": None,
-  "CDB-N-Cuántos racimos de banano ha cosechado": None,
-  "CDB-N-Cuántos colinos de banano plantaron": None,
-  "CDB-N-Cuántos colinos de banano murieron": None,
-  "CDG-N-Cantidad sembrada de Guayabo": None,
-  "CDG-N-Cuántos racimos de guayabo ha cosechado": None,
-  "CDG-N-Cuántos colinos de guayabo plantaron": None,
-  "CDG-N-Cuántos colinos de guayabo murieron": None,
-  "SDSDH-N-Cantidad de sobres entregados": None,
-  "BDG-N-Bandejas de germinación entregadas": None,
-  "FM-O-Cómo ha sido el funcionamiento": "---",
-  "PV-N-Cantidad entregada de pasto vetiver": None,
-  "C-N-Cuántas láminas de zinc ha utilizado en la compostera": None,
-  "C-N-Cuántos bultos de cemento ha utilizado en la compostera": None,
-  "C-N-Cuánto amarre ha utilizado en la compostera": None,
-  "Ha entregado semillas a vecino-O": "---",
-  "Nombre del Vecino 1": None,
-  "Nombre del Vecino 2": None,
-  "Intención de articularse al Mercado Agroecológico-O": "---",
-  "Compromiso frente al proceso": None,
-  "Cuál semilla ha entregado a vecinos": None,
-  "Finca del Vecino 1": None,
-  "Finca del Vecino 2": None,
-  "Intención de articularse a Proceso Educativo-O": "---",
-  "Observaciones": None,
-  "Fecha de Firma": hoy,
-  "Nombre de quién firma": None,
-  "Cédula de quién firma": None
+  "GEN-Fecha": hoy,
+  "GEN-O-Municipio": None,
+  "GEN-O-Cuenca":None,
+  "GEN-Vereda": None,
+  "GEN-DAR": None,
+  "GEN-Finca": None,
+  "GEN-Beneficiario": None,
+  "GEN-O-Vigencia": None,
+  "GEN-Recibe la visita": None,
+  "GEN-O-Propietario": None,
+  "IND-CDS-O-Uso de materia orgánica": None,
+  "IND-CDS-O-Trinchos; barreras; para evitar la pérdida de suelo": None,
+  "IND-CDS-O-Suelo cubierto durante al menos 10 meses del año": None,
+  "IND-CDS-O-Trazado con curvas a nivel": None,
+  "IND-CYPDLB-O-Practica la caza": None,
+  "IND-CYPDLB-O-Se tienen barreras vivas alrededor de la finca": None,
+  "IND-CYPDLB-O-Siembra árboles como hábitat para las aves": None,
+  "IND-CYPDLB-O-Tienen corredores biológicos en la finca": None,
+  "IND-SA-MUL-Productos": [],
+  "IND-UDB-O-Biofertilizantes": None,
+  "IND-UDB-O-Abonos orgánicos": None,
+  "IND-UDB-O-Uso de microorganismos de montaña": None,
+  "IND-UDB-O-Biocontroladores": None,
+  "IND-A-O-Las fuentes de agua se encuentran protegidas": None,
+  "IND-A-O-Se genera vertimientos propios en la finca": None,
+  "IND-A-O-Tiene tratamiento de aguas residuales en la finca": None,
+  "IND-A-O-Cosecha de agua en la finca.": None,
+  "IND-UDA-O-Usa agroquímicos": None,
+  "IND-UDA-O-De manera permanente": None,
+  "IND-UDA-O-De manera esporádica y como último recurso": None,
+  "IND-PF-O-Participa solo la propietaria (o)": None,
+  "IND-PF-O-Participa más de un integrante de la familia": None,
+  "IND-PF-O-Participa toda la familia": None,
+  "IM-SDMA-N-Cantidad de semilla entregada en kilos": None,
+  "IM-SDMA-N-Cuántos kilos sembró": None,
+  "IM-SDMA-N-Cuántas cosechas lleva": None,
+  "IM-SDMA-N-Cuántos kilos ha cosechado": None,
+  "IM-SDMA-O-Cómo fue el desarrollo": None,
+  "IM-SDMA-M-Qué otra variedad de maíz tiene": [],
+  "IM-SDF-N-Cantidad de semilla entregada en kilos": None,
+  "IM-SDF-N-Cuántos kilos sembró": None,
+  "IM-SDF-N-Cuántas cosechas lleva": None,
+  "IM-SDF-N-Cuántos kilos ha cosechado": None,
+  "IM-SDF-O-Cómo fue el desarrollo": None,
+  "IM-SDF-M-Qué otra variedad de fríjol tiene": [],
+  "IM-EBDF-N-Cantidad de estacas de Botón de oro": None,
+  "IM-EBDF-N-Cuántas estacas de Nacedero": None,
+  "IM-EBDF-N-Cuántas estacas de Matarratón": None,
+  "IM-EBDF-N-Cuántas estacas sembradas prendieron": None,
+  "IM-EBDF-O-Cuál es el estado actual del banco de forraje": None,
+  "IM-EBDF-O-Continúa su propagación": None,
+  "IM-AF-N-Cantidad de tipo Injerto": None,
+  "IM-AF-N-Cantidad de tipo Nativos": None,
+  "IM-AF-N-Cuántos arboles se desarrollaron": None,
+  "IM-AF-O-En qué estado están": None,
+  "IM-AF-N-Número de árboles vivos": None,
+  "IM-CDP-N-Cantidad sembrada de Plátano": None,
+  "IM-CDP-N-Cuántos colinos de plátano plantaron": None,
+  "IM-CDP-N-Cuántos colinos de plátano murieron": None,
+  "IM-CDB-N-Cantidad sembrada de Banano": None,
+  "IM-CDB-N-Cuántos colinos de banano plantaron": None,
+  "IM-CDB-N-Cuántos colinos de banano murieron": None,
+  "IM-CDG-N-Cantidad sembrada de Guayabo": None,
+  "IM-CDG-N-Cuántos colinos de guayabo plantaron": None,
+  "IM-CDG-N-Cuántos colinos de guayabo murieron": None,
+  "IM-SDSDH-N-Cantidad de sobres entregados": None,
+  "IM-SDSDH-N-Cuántas veces ha sembrado": None,
+  "IM-SDSDH-O-Continúa sembrando": None,
+  "IM-SDSDH-N-Continúa sembrando cada cuanto (meses)": None,
+  "IM-BDG-N-Bandejas de germinación entregadas": None,
+  "IM-BDG-O-Se ha utilizado la bandeja de germinación": None,
+  "IM-BDG-O-En qué estado está": None,
+  "IM-FM-Fumigadora Manual entregada": None,
+  "IM-FM-O-Fue utilizada con Bioinsumos Orgánicos": None,
+  "IM-FM-O-Cómo ha sido el funcionamiento": None,
+  "IM-PV-N-Cantidad entregada de pasto vetiver": None,
+  "IM-PV-O-Se implementó la siembra": None,
+  "IM-PV-O-Se desarrolló bien en el campo": None,
+  "IM-PV-Qué manejo le ha dado": None,
+  "IM-C-O-Los materiales fueron utilizados para": None,
+  "IM-C-N-Cuántas láminas de zinc ha utilizado en la compostera": None,
+  "IM-C-N-Cuántos bultos de cemento ha utilizado en la compostera": None,
+  "IM-C-N-Cuánto amarre ha utilizado en la compostera": None,
+  "IM-AO-N-Cantidad entregada de abonos orgánicos en kilos": None,
+  "IM-AO-N-Qué cantidad ha utilizado": None,
+  "RS-O-Ha entregado semillas a vecino": None,
+  "RS-Nombre del Vecino 1": "",
+  "RS-Nombre del Vecino 2": "",
+  "RS-O-Intención de articularse al Mercado Agroecológico": None,
+  "RS-Compromiso frente al proceso": None,
+  "RS-Cuál semilla ha entregado a vecinos": [],
+  "RS-Finca del Vecino 1": "",
+  "RS-Finca del Vecino 2": "",
+  "RS-O-Intención de articularse a Proceso Educativo": None,
+  "RS-Observaciones": None,
+  "FIR-Fecha de Firma": hoy,
+  "FIR-Nombre de quién firma": None,
+  "FIR-Cédula de quién firma": None
 }
 
-sig={}
+#sig={}
 
-for i in data.keys():
-    sig[siglas(i)]=i
+#for i in data.keys():
+#    sig[siglas(i)]=i
 
 def titulo(num,tit):
     st.markdown(f'<h{num} style="text-align: center;">{tit}</h{num}>',unsafe_allow_html=True)
@@ -198,36 +321,85 @@ if authentication_status:
     with c3:
         authenticator.logout('Salir', 'main')
 
-    titulo(1,"Segimiento Seguridad Alimentaria")
+    titulo(1,"Seguimiento Seguridad Alimentaria")
 
     titulo(2,"Información General")
     infoA=st.columns(3)
     with infoA[0]:
-        resul["Fecha"]=st.date_input("Fecha de Visita", value="today", format="DD-MM-YYYY", key="Fecha").strftime('%Y-%m-%d %H:%M:%S')
-        resul["Municipio"]=st.text_input("Municipio:", key="Municipio")
+        resul["GEN-Fecha"]=st.date_input("Fecha de Visita", value="today", format="DD-MM-YYYY", key="GEN-Fecha").strftime('%Y-%m-%d %H:%M:%S')
+        resul["GEN-O-Municipio"]=st.selectbox("Municipio", ["Cartago", "El Cairo", "La Victoria", "Obando", "Ulloa", "Argelia", "Alcalá", "Ansermanuevo", "El Águila"], index=None, key="GEN-O-Municipio")
 
     with infoA[1]:
-        resul["Cuenca"]=st.text_input("Cuenca:", key="Cuenca")
-        resul["Vereda"]=st.text_input("Vereda:", key="Vereda")
+        resul["GEN-O-Cuenca"]=st.selectbox("Cuenca", ["El Cairo", "Catarina", "La Vieja", "Cañaveral", "Catarina", "Garrapatas", "Chanco", "Obando", "La Vieja", "Alcala", "Cartago", "Obando", "Ulloa", "La Victoria", "Zarzal", "Cañaveral", "Ansermanuevo", "El Aguila"],index=None, key="GEN-O-Cuenca")
+        resul["GEN-Vereda"]=st.text_input("Vereda", value=None, key="GEN-Vereda")
             
 
     with infoA[2]:
-        resul["DAR"]=st.text_input("DAR:", value="NORTE", key="DAR")
-        resul["Finca"]=st.text_input("Finca:", key="Finca")
+        resul["GEN-DAR"]=st.selectbox("DAR", ["NORTE"], index=None,key="GEN-DAR")
+        resul["GEN-Finca"]=st.text_input("Finca", value=None, key="GEN-Finca")
 
 
     infoB=st.columns(2)
     with infoB[0]:
-        resul["Beneficiario"]=st.text_input("Beneficiario(a):", key="Beneficiario")
-        resul["Vigencia-O"]=st.selectbox("Vigencia", [2020, 2021, 2022], key="Vigencia-O")
+        resul["GEN-Beneficiario"]=st.text_input("Beneficiario(a)", value=None, key="GEN-Beneficiario")
+        resul["GEN-O-Vigencia"]=st.selectbox("Vigencia", [2020, 2021, 2022], index=None, key="GEN-O-Vigencia")
     with infoB[1]:
-        resul["Recibe la visita"]=st.text_input("Quien recibe la visita:", key="Recibe la visita")
-        resul["Propietario-O"]=st.selectbox("Estado de la propiedad", ["---","El mismo dueño", "Cambio de propietario"], key="Propietario-O")
+        resul["GEN-Recibe la visita"]=st.text_input("Quien recibe la visita", value=None, key="GEN-Recibe la visita")
+        resul["GEN-O-Propietario"]=st.selectbox("Estado de la propiedad", ["El mismo dueño", "Cambio de propietario"], index=None,  key="GEN-O-Propietario")
     
     
-    st.markdown("---")
+    st.markdown('---')
     st.markdown(" ")
 
+###
+### INDICADORES
+###
+    titulo(2,"Indicadores")
+
+    st.markdown(" ")
+
+    head=st.columns(3)
+    with head[0]:
+        st.markdown("**Indicador**")
+    with head[1]:
+        st.markdown("**Descripción**")
+    with head[2]:
+        st.markdown("**Observaciones**") 
+    st.markdown('---')
+
+    for ind in data_ind.keys():
+        si=siglas(ind)
+        cols=st.columns(3)
+        cols[0].write(ind)
+        if "descripción" in data_ind[ind]:
+            descrip=data_ind[ind]["descripción"][0]
+            with cols[1]:
+                st.write(descrip)
+        if "observación" in data_ind[ind]:
+            observaciones=data_ind[ind]["observación"]
+            with cols[2]:
+                for obs in observaciones:
+                    if obs["tipo"] == "options":
+                        resul[("IND-"+si+"-O-"+obs["texto"]).strip()]=st.selectbox(obs["texto"],index=None, options=obs["opciones"], key=("IND-"+si+"-O-"+obs["texto"]).strip())
+                    if obs["tipo"] == "multi":
+                        resul[("IND-"+si+"-MUL-"+obs["texto"]).strip()]=st.multiselect(obs["texto"], options=obs["opciones"], key=("IND-"+si+"-MUL-"+obs["texto"]).strip())
+                    if obs["tipo"] == "text":
+                        resul[("IND-"+si+"-"+obs["texto"]).strip()]=st.text_input(obs["texto"], value=None, key=("IND-"+si+"-"+obs["texto"]).strip())
+                    if obs["tipo"] == "numeric":
+                        resul[("IND-"+si+"-N-"+obs["texto"]).strip()]=st.number_input(obs["texto"], value=None, key=("IND-"+si+"-N-"+obs["texto"]).strip())
+        st.markdown('---')
+
+    st.markdown(" ")
+
+
+
+####
+####
+
+
+###
+### INSUMOS
+###
     titulo(2,"Insumos o Materiales")
 
     st.markdown(" ")
@@ -239,53 +411,62 @@ if authentication_status:
         st.markdown("**Cantidad**")
     with head[2]:
         st.markdown("**Observaciones**") 
-    st.markdown("---")
+    st.markdown('---')
 
     for insu in data.keys():
+        si=siglas(insu)
         cols=st.columns(3)
         cols[0].write(insu)
         if "cantidad" in data[insu]:
             cantidades=data[insu]["cantidad"]
             with cols[1]:
                 for can in cantidades:
-                    resul[(siglas(insu)+"-N-"+can).strip()]=st.number_input(can,value=None, key=siglas(insu)+"-N-"+can)
+                    resul[("IM-"+si+"-N-"+can).strip()]=st.number_input(can,value=None, key="IM-"+si+"-N-"+can)
         if "observación" in data[insu]:
             observaciones=data[insu]["observación"]
             with cols[2]:
                 for obs in observaciones:
                     if obs["tipo"] == "options":
-                        resul[(siglas(insu)+"-O-"+obs["texto"]).strip()]=st.selectbox(obs["texto"],options=obs["opciones"], key=siglas(insu)+"-O-"+obs["texto"])
+                        resul[("IM-"+si+"-O-"+obs["texto"]).strip()]=st.selectbox(obs["texto"],index=None, options=obs["opciones"], key=("IM-"+si+"-O-"+obs["texto"]).strip())
                     if obs["tipo"] == "text":
-                        resul[(siglas(insu)+"-"+obs["texto"]).strip()]=st.text_input(obs["texto"], key=siglas(insu)+"-"+obs["texto"])
+                        resul[("IM-"+si+"-"+obs["texto"]).strip()]=st.text_input(obs["texto"], value=None, key=("IM-"+si+"-"+obs["texto"]).strip())
                     if obs["tipo"] == "numeric":
-                        resul[(siglas(insu)+"-N-"+obs["texto"]).strip()]=st.number_input(obs["texto"], value=None, key=siglas(insu)+"-N-"+obs["texto"])
-        st.markdown("---")
+                        resul[("IM-"+si+"-N-"+obs["texto"]).strip()]=st.number_input(obs["texto"], value=None, key=("IM-"+si+"-N-"+obs["texto"]).strip())
+                    if obs["tipo"] == "multi":
+                        resul[("IM-"+si+"-M-"+obs["texto"]).strip()]=st.multiselect(obs["texto"], options=obs["opciones"], key=("IM-"+si+"-M-"+obs["texto"]).strip())
+        st.markdown('---')
+
+    st.markdown(" ")
 
 
-    titulo(2,"Sobre el Beneficiario")
+    titulo(2,"Retribución solidaria")
+    st.markdown(" ")
     benefA=st.columns(2)
     with benefA[0]:
-        resul["Ha entregado semillas a vecino-O"]=st.selectbox("El beneficiario manifiesta haber entregado semillas a un vecino de su vereda", ["---","Si","No"], key="Ha entregado semillas a vecino-O")
-        resul["Nombre del Vecino 1"]=st.text_input("Nombre del Vecino 1", key="Nombre del Vecino 1")
-        resul["Nombre del Vecino 2"]=st.text_input("Nombre del Vecino 2", key="Nombre del Vecino 2")
-        resul["Intención de articularse al Mercado Agroecológico-O"]=st.selectbox("El beneficiario manifiesta la intención de articularse al proceso de Mercado Agroecológico", ["---","Si","No"], key="Intención de articularse al Mercado Agroecológico-O")
-        resul["Compromiso frente al proceso"]=st.text_input("Compromiso frente al proceso", key="Compromiso frente al proceso")
+        resul["RS-O-Ha entregado semillas a vecino"]=st.selectbox("El beneficiario manifiesta haber entregado semillas a un vecino de su vereda", ["Si","No"], index=None, key="RS-O-Ha entregado semillas a vecino")
+        resul["RS-Nombre del Vecino 1"]=st.text_input("Nombre del Vecino 1",  key="RS-Nombre del Vecino 1")
+        resul["RS-Nombre del Vecino 2"]=st.text_input("Nombre del Vecino 2", key="RS-Nombre del Vecino 2")
+        resul["RS-O-Intención de articularse al Mercado Agroecológico"]=st.selectbox("El beneficiario manifiesta la intención de articularse al proceso de Mercado Agroecológico", ["Si","No"], index=None,  key="RS-O-Intención de articularse al Mercado Agroecológico")
+        resul["RS-Compromiso frente al proceso"]=st.text_input("Compromiso frente al proceso", value=None, key="RS-Compromiso frente al proceso")
     with benefA[1]:
-        resul["Cuál semilla ha entregado a vecinos"]=st.text_input("Cuál semilla ha entregado a vecinos", key="Cuál semilla ha entregado a vecinos")
-        resul["Finca del Vecino 1"]=st.text_input("Finca del Vecino 1", key="Finca del Vecino 1")
-        resul["Finca del Vecino 2"]=st.text_input("Finca del Vecino 2", key="Finca del Vecino 2")
-        resul["Intención de articularse a Proceso Educativo-O"]=st.selectbox("El beneficiario manifiesta la intención de articularse al proceso en la Institución educativa", ["---","Si","No"], key="Intención de articularse a Proceso Educativo-O")
-        resul["Observaciones"]=st.text_input("Observaciones", key="Observaciones")
+        resul["RS-Cuál semilla ha entregado a vecinos"]=st.multiselect("Cuál semilla ha entregado a vecinos", ["Ninguno","Maíz", "Frijol", "Hortalizas", "Otras"], key="RS-Cuál semilla ha entregado a vecinos")
+        resul["RS-Finca del Vecino 1"]=st.text_input("Finca del Vecino 1", key="RS-Finca del Vecino 1")
+        resul["RS-Finca del Vecino 2"]=st.text_input("Finca del Vecino 2", key="RS-Finca del Vecino 2")
+        resul["RS-O-Intención de articularse a Proceso Educativo"]=st.selectbox("El beneficiario manifiesta la intención de articularse al proceso en la Institución educativa", ["Si","No"], index=None, key="RS-O-Intención de articularse a Proceso Educativo")
+        resul["RS-Observaciones"]=st.text_input("Observaciones", value=None, key="RS-Observaciones")
 
-    st.markdown("---")
+    st.markdown('---')
+
+    st.markdown(" ")
+    titulo(3,"Firma")
 
     firma=st.columns(3)
     with firma[0]:
-        resul["Fecha de Firma"]=st.date_input("Fecha de Firma", value="today", format="DD-MM-YYYY", key="Fecha de Firma").strftime('%Y-%m-%d %H:%M:%S')
+        resul["FIR-Fecha de Firma"]=st.date_input("Fecha de Firma", value="today", format="DD-MM-YYYY", key="FIR-Fecha de Firma").strftime('%Y-%m-%d %H:%M:%S')
     with firma[1]:    
-        resul["Nombre de quién firma"]=st.text_input("Nombre de quién firma", key="Nombre de quién firma")
+        resul["FIR-Nombre de quién firma"]=st.text_input("Nombre de quién firma", value=None,  key="FIR-Nombre de quién firma")
     with firma[2]:    
-        resul["Cédula de quién firma"]=st.number_input("Cédula de quién firma", value=None, step=1, key="Cédula de quién firma")
+        resul["FIR-Cédula de quién firma"]=st.number_input("Cédula de quién firma", value=None, step=1, key="FIR-Cédula de quién firma")
 
 
 
@@ -293,15 +474,16 @@ if authentication_status:
     submitted = st.button("ENVIAR",type='primary',use_container_width=True, on_click=disable ,disabled=st.session_state.disabled)
 
     if submitted:
-        if resul["Nombre de quién firma"] == None:
+        faltantes=[]
+        for i in resul.keys():
+            if  i not in ["FIR-Fecha de Firma","GEN-Fecha","encuestador"]:
+                if resul[i]==clean[i]:
+                    faltantes.append(i.split('-')[-1]) 
+        if len(faltantes) > 0:
+            fal=', '.join(faltantes)
             st.session_state.error = True
             titulo(6, "⚠️ ¡Cuidado! ⚠️")
-            st.warning("⚠️ Faltó el nombre de quién firma. Intente de nuevo ⚠️")
-        
-        if resul["Cédula de quién firma"] == None:
-            st.session_state.error = True
-            titulo(6, "⚠️ ¡Cuidado! ⚠️")
-            st.warning("⚠️ Faltó el número de cédula de quién firma. Intente de nuevo ⚠️")
+            st.warning(f"⚠️ Faltan los siguientes campos: {fal} ⚠️")
 
         else:
             #data,count=resul,1
@@ -314,9 +496,7 @@ if authentication_status:
                 titulo(4,"Enviado")
                 st.success("Enviado satisfactoriamente")
                 st.session_state.error = False
-            #    st.write(d)
-                #dP,count = supabase.table("cantidad").insert({"perfil":email, "cant":cantP+1}).execute()
-
+            
             else:
                 st.session_state.error = True
                 titulo(4,"❌ Error ❌")
