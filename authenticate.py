@@ -125,7 +125,7 @@ class Authenticate:
             if not st.session_state['provider']:
                 login_form=place.form(form_name)
                 login_form.subheader(form_name)
-                self.email = login_form.text_input('Email')
+                self.email = login_form.text_input('Usuario')
                 st.session_state['email'] = self.email
                 self.password = login_form.text_input('Contraseña', type='password')
 
