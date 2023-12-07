@@ -476,7 +476,7 @@ if authentication_status:
     if submitted:
         faltantes=[]
         for i in resul.keys():
-            if  i not in ["FIR-Fecha de Firma","GEN-Fecha","encuestador"]:
+            if  i not in ["FIR-Fecha de Firma","GEN-Fecha","encuestador", "RS-Finca del Vecino 1","RS-Finca del Vecino 2", "RS-Nombre del Vecino 1","RS-Nombre del Vecino 2"]:
                 if resul[i]==clean[i]:
                     faltantes.append(i.split('-')[-1]) 
         if len(faltantes) > 0:
