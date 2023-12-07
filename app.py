@@ -9,10 +9,10 @@ from datetime import datetime
 import os
 
 
-#from dotenv import find_dotenv, load_dotenv
-#ENV_FILE = find_dotenv()
-#if ENV_FILE:
-#    load_dotenv(ENV_FILE)
+# from dotenv import find_dotenv, load_dotenv
+# ENV_FILE = find_dotenv()
+# if ENV_FILE:
+#     load_dotenv(ENV_FILE)
 
 st.set_page_config(layout="wide")
 
@@ -56,7 +56,7 @@ data_ind={'CONSERVACIÓN DE SUELOS': {'descripción': ['Al menos 3 prácticas de
  'SEGURIDAD ALIMENTARIA': {'descripción': ['Productos agropecuarios generado para el autoconsumo.'],
   'observación': [{'texto': 'Productos',
     'tipo': 'multi',
-    'opciones': ['Ninguno', 'Frutas', 'Verduras', 'Hortalizas', 'Legumbres', 'Maíz', 'Ganado vacuno', 'Ganado porcino', 'Apicultura', 'Avicola']}]},
+    'opciones': ['Ninguno', 'Fríjol','Maíz','Frutas', 'Verduras', 'Hortalizas', 'Legumbres', 'Ganado vacuno', 'Ganado porcino', 'Apicultura', 'Avicola']}]},
  'USO DE BIOINSUMOS': {'descripción': ['Prepara al menos 3 bioinsumos para uso en la finca.'],
   'observación': [{'texto': 'Biofertilizantes',
     'tipo': 'options',
@@ -117,7 +117,7 @@ data={'SEMILLA DE MAÍZ AMARILLO': {'cantidad': ['Cantidad de semilla entregada 
    {'texto': 'Cómo fue el desarrollo', 'tipo': 'options',
     'opciones': ['Bueno', 'Regular', 'Malo']},
    {'texto': 'Qué otra variedad de fríjol tiene', 'tipo': 'multi',
-    'opciones': ['Ninguno', 'Caupi', 'Bolones', 'Cargamanto', 'Otro']}]},
+    'opciones': ['Ninguno', 'Caupi', 'Bolones', 'Cargamanto','Arbolito', 'Otro']}]},
  'ESTACAS BANCO DE FORRAJE': {'cantidad': ['Cantidad de estacas de Botón de oro',
    'Cuántas estacas de Nacedero',
    'Cuántas estacas de Matarratón'],
@@ -157,18 +157,18 @@ data={'SEMILLA DE MAÍZ AMARILLO': {'cantidad': ['Cantidad de semilla entregada 
   'observación': [
    {'texto': 'Se ha utilizado la bandeja de germinación', 'tipo': 'options', 'opciones':['Si', 'No']},
    {'texto': 'En qué estado está', 'tipo': 'options', 'opciones':['Bueno', 'Regular', 'Malo', 'No se utilizó']}]},
- 'FUMIGADORA MANUAL': {'observación': [{'texto': 'Fumigadora Manual entregada', 'tipo': 'text'},
+ 'FUMIGADORA MANUAL': {'cantidad': ['Cantidad de fumigadoras manuales entregadas'],'observación': [
    {'texto': 'Fue utilizada con Bioinsumos Orgánicos', 'tipo': 'options', 'opciones':['Si', 'No']},
    {'texto': 'Cómo ha sido el funcionamiento', 'tipo': 'options', 'opciones': [ 'Bueno', 'Regular', 'Malo']}]},
- 'PASTO VETIVER': {'cantidad': ['Cantidad entregada de pasto vetiver'],
+ 'PASTO VETIVER': {'cantidad': ['Cantidad entregada de pasto vetiver (esquejes)'],
    'observación': [{'texto': 'Se implementó la siembra', 'tipo': 'options', 'opciones':['Si', 'No']},
    {'texto': 'Se desarrolló bien en el campo', 'tipo': 'options', 'opciones':['Si', 'No']},
-   {'texto': 'Qué manejo le ha dado', 'tipo': 'text'}]},
- 'COMPOSTERA': {'observación':[{'texto': 'Los materiales fueron utilizados para', 'tipo':'options','opciones': ['Construir compostera nueva', 'Mejoramiento de compostera existente', 'No se utilizaron en compostera'] },
+   {'texto': 'Qué manejo le ha dado', 'tipo':  'options', 'opciones':['Limpieza', 'Poda', 'Ninguno']}]},
+ 'COMPOSTERA': {'observación':[{'texto': 'Los materiales fueron utilizados para', 'tipo':'options','opciones': ['No recibió material para compostera', 'Construir compostera nueva', 'Mejoramiento de compostera existente', 'No se utilizaron en compostera'] },
      {'texto': 'Cuántas láminas de zinc ha utilizado en la compostera', 'tipo':'numeric'},
                                {'texto': 'Cuántos bultos de cemento ha utilizado en la compostera', 'tipo':'numeric'},
                                {'texto': 'Cuánto amarre ha utilizado en la compostera', 'tipo':'numeric'}]},
- 'ABONO ORGÁNICO': {'cantidad': ['Cantidad entregada de abonos orgánicos en kilos'],
+ 'ABONO ORGÁNICO': {'cantidad': ['Cantidad entregada de abonos orgánicos (bultos)'],
     'observación':[{'texto': 'Qué cantidad ha utilizado', 'tipo':'numeric'}]}}
 
 hoy=datetime.today()
@@ -176,7 +176,7 @@ hoy=datetime.today()
 clean={
   "GEN-Fecha": hoy,
   "GEN-O-Municipio": None,
-  "GEN-O-Cuenca":None,
+  "GEN-O-Cuenca": None,
   "GEN-Vereda": None,
   "GEN-DAR": None,
   "GEN-Finca": None,
@@ -246,27 +246,27 @@ clean={
   "IM-BDG-N-Bandejas de germinación entregadas": None,
   "IM-BDG-O-Se ha utilizado la bandeja de germinación": None,
   "IM-BDG-O-En qué estado está": None,
-  "IM-FM-Fumigadora Manual entregada": None,
+  "IM-FM-N-Cantidad de fumigadoras manuales entregadas": None,
   "IM-FM-O-Fue utilizada con Bioinsumos Orgánicos": None,
   "IM-FM-O-Cómo ha sido el funcionamiento": None,
-  "IM-PV-N-Cantidad entregada de pasto vetiver": None,
+  "IM-PV-N-Cantidad entregada de pasto vetiver (esquejes)": None,
   "IM-PV-O-Se implementó la siembra": None,
   "IM-PV-O-Se desarrolló bien en el campo": None,
-  "IM-PV-Qué manejo le ha dado": None,
+  "IM-PV-O-Qué manejo le ha dado": None,
   "IM-C-O-Los materiales fueron utilizados para": None,
   "IM-C-N-Cuántas láminas de zinc ha utilizado en la compostera": None,
   "IM-C-N-Cuántos bultos de cemento ha utilizado en la compostera": None,
   "IM-C-N-Cuánto amarre ha utilizado en la compostera": None,
-  "IM-AO-N-Cantidad entregada de abonos orgánicos en kilos": None,
+  "IM-AO-N-Cantidad entregada de abonos orgánicos (bultos)": None,
   "IM-AO-N-Qué cantidad ha utilizado": None,
   "RS-O-Ha entregado semillas a vecino": None,
-  "RS-Nombre del Vecino 1": "",
-  "RS-Nombre del Vecino 2": "",
+  "RS-Nombre del Vecino 1": None,
+  "RS-Nombre del Vecino 2": None,
   "RS-O-Intención de articularse al Mercado Agroecológico": None,
   "RS-Compromiso frente al proceso": None,
   "RS-Cuál semilla ha entregado a vecinos": [],
-  "RS-Finca del Vecino 1": "",
-  "RS-Finca del Vecino 2": "",
+  "RS-Finca del Vecino 1": None,
+  "RS-Finca del Vecino 2": None,
   "RS-O-Intención de articularse a Proceso Educativo": None,
   "RS-Observaciones": None,
   "FIR-Fecha de Firma": hoy,
@@ -444,14 +444,14 @@ if authentication_status:
     benefA=st.columns(2)
     with benefA[0]:
         resul["RS-O-Ha entregado semillas a vecino"]=st.selectbox("El beneficiario manifiesta haber entregado semillas a un vecino de su vereda", ["Si","No"], index=None, key="RS-O-Ha entregado semillas a vecino")
-        resul["RS-Nombre del Vecino 1"]=st.text_input("Nombre del Vecino 1",  key="RS-Nombre del Vecino 1")
-        resul["RS-Nombre del Vecino 2"]=st.text_input("Nombre del Vecino 2", key="RS-Nombre del Vecino 2")
+        resul["RS-Nombre del Vecino 1"]=st.text_input("Nombre del Vecino 1",value=None, key="RS-Nombre del Vecino 1")
+        resul["RS-Nombre del Vecino 2"]=st.text_input("Nombre del Vecino 2",value=None, key="RS-Nombre del Vecino 2")
         resul["RS-O-Intención de articularse al Mercado Agroecológico"]=st.selectbox("El beneficiario manifiesta la intención de articularse al proceso de Mercado Agroecológico", ["Si","No"], index=None,  key="RS-O-Intención de articularse al Mercado Agroecológico")
         resul["RS-Compromiso frente al proceso"]=st.text_input("Compromiso frente al proceso", value=None, key="RS-Compromiso frente al proceso")
     with benefA[1]:
-        resul["RS-Cuál semilla ha entregado a vecinos"]=st.multiselect("Cuál semilla ha entregado a vecinos", ["Ninguno","Maíz", "Frijol", "Hortalizas", "Otras"], key="RS-Cuál semilla ha entregado a vecinos")
-        resul["RS-Finca del Vecino 1"]=st.text_input("Finca del Vecino 1", key="RS-Finca del Vecino 1")
-        resul["RS-Finca del Vecino 2"]=st.text_input("Finca del Vecino 2", key="RS-Finca del Vecino 2")
+        resul["RS-Cuál semilla ha entregado a vecinos"]=st.multiselect("Cuál semilla ha entregado a vecinos", ["Ninguno","Maíz", "Frijol", "Colino de Banano", "Colino de Platano","Colino de Guayabo","Estacas de Forraje","Pasto Vetiver", "Hortalizas", "Otras"], key="RS-Cuál semilla ha entregado a vecinos")
+        resul["RS-Finca del Vecino 1"]=st.text_input("Finca del Vecino 1",value=None, key="RS-Finca del Vecino 1")
+        resul["RS-Finca del Vecino 2"]=st.text_input("Finca del Vecino 2",value=None, key="RS-Finca del Vecino 2")
         resul["RS-O-Intención de articularse a Proceso Educativo"]=st.selectbox("El beneficiario manifiesta la intención de articularse al proceso en la Institución educativa", ["Si","No"], index=None, key="RS-O-Intención de articularse a Proceso Educativo")
         resul["RS-Observaciones"]=st.text_input("Observaciones", value=None, key="RS-Observaciones")
 
@@ -489,7 +489,7 @@ if authentication_status:
             #data,count=resul,1
             #if len(data.keys())>1:
             ## ENVIAR A SUPABASE
-                #st.write(resul)
+            #    st.write(resul)
             data,count = supabase.table("cvc").insert(resul).execute()
             if data[1][0]:
                 d=data[1][0]
