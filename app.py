@@ -327,10 +327,10 @@ if authentication_status:
     infoA=st.columns(3)
     with infoA[0]:
         resul["GEN-Fecha"]=st.date_input("Fecha de Visita", value="today", format="DD-MM-YYYY", key="GEN-Fecha").strftime('%Y-%m-%d %H:%M:%S')
-        resul["GEN-O-Municipio"]=st.selectbox("Municipio", ["Cartago", "El Cairo", "La Victoria", "Obando", "Ulloa", "Argelia", "Alcalá", "Ansermanuevo", "El Águila"], index=None, key="GEN-O-Municipio")
+        resul["GEN-O-Municipio"]=st.selectbox("Municipio", ['ALCALA ', 'ULLOA ', 'CARTAGO', 'OBANDO', 'LA VICTORIA', 'ZARZAL', 'OBANDO', 'ANSERMANUEVO', 'EL AGUILA', 'ANSERMANUEVO', 'ARGELIA', 'EL CAIRO'].sort(), index=None, key="GEN-O-Municipio")
 
     with infoA[1]:
-        resul["GEN-O-Cuenca"]=st.selectbox("Cuenca", ["El Cairo", "Catarina", "La Vieja", "Cañaveral", "Catarina", "Garrapatas", "Chanco", "Obando", "La Vieja", "Alcala", "Cartago", "Obando", "Ulloa", "La Victoria", "Zarzal", "Cañaveral", "Ansermanuevo", "El Aguila"],index=None, key="GEN-O-Cuenca")
+        resul["GEN-O-Cuenca"]=st.selectbox("Cuenca", ['LA VIEJA ', 'OBANDO', 'CAÑAVERAL', 'CHANCOS', 'GARRAPATAS'].sort(),index=None, key="GEN-O-Cuenca")
         resul["GEN-Vereda"]=st.text_input("Vereda", value=None, key="GEN-Vereda")
             
 
