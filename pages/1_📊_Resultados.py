@@ -125,6 +125,7 @@ def encab(tit):
 
 d1,d2=supabase.table("cvc").select("*").execute()
 df=pd.DataFrame.from_dict(d1[1],orient='columns')
+df.drop_duplicates(subset="FIR-Cédula de quién firma", keep='last', inplace=True, ignore_index=False)
 
 authenticator = Authenticate("supa_auth", url, key)
 
@@ -142,7 +143,7 @@ if authentication_status:
 
     titulo(1,"Visualizador de Resultados")
 
-
+    st.write(f"Hay un total de **{len(df)} encuestas**")
 
     st.divider()
     ex=st.columns(4)
