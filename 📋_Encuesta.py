@@ -9,12 +9,12 @@ from datetime import datetime
 import os
 
 
-# from dotenv import find_dotenv, load_dotenv
-# ENV_FILE = find_dotenv()
-# if ENV_FILE:
-#     load_dotenv(ENV_FILE)
+from dotenv import find_dotenv, load_dotenv
+ENV_FILE = find_dotenv()
+if ENV_FILE:
+    load_dotenv(ENV_FILE)
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="📋 Encuesta")
 
 url: str = os.getenv("SUPABASE_URL")
 key: str = os.getenv("SUPABASE_KEY")
@@ -277,7 +277,10 @@ clean={
 #sig={}
 
 #for i in data.keys():
-#    sig[siglas(i)]=i
+#   sig[siglas(i)]=i
+#for i in data_ind.keys():
+#   sig[siglas(i)]=i
+#st.write(sig)
 
 def titulo(num,tit):
     st.markdown(f'<h{num} style="text-align: center;">{tit}</h{num}>',unsafe_allow_html=True)
@@ -315,7 +318,7 @@ if authentication_status:
     cantP=len(cantidadP[1])
     resul={"encuestador":email}
 
-    c1, c2, c3 = st.columns([6,1.6,0.6])
+    c1, c2, c3 =  st.columns([4.5,1.8,1])
     with c2:
         st.markdown(f"""{email.split("@")[0]}: **{cantP} encuestas**""")
     with c3:

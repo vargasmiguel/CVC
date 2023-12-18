@@ -113,7 +113,7 @@ class Authenticate:
             raise ValueError("Location must be one of 'main' or 'sidebar'")
 
         if location == 'main':
-            c = st.columns([3,1,3])
+            c = st.columns([2,1,2])
             with c[1]:
                 st.image("logo-cvc.png",width=200)
             place=st.empty()
