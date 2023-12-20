@@ -125,7 +125,7 @@ def encab(tit):
 
 d1,d2=supabase.table("cvc").select("*").execute()
 df=pd.DataFrame.from_dict(d1[1],orient='columns')
-df.drop_duplicates(subset="FIR-Cédula de quién firma", keep='last', inplace=True, ignore_index=False)
+df.drop_duplicates(subset="GEN-Beneficiario", keep='last', inplace=True, ignore_index=False)
 
 authenticator = Authenticate("supa_auth", url, key)
 
