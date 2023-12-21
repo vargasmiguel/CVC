@@ -2,3 +2,4 @@ plotly
 supabase
 extra_streamlit_components
 PyJWT
+pygwalker
