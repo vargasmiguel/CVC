@@ -7,15 +7,11 @@ from supabase import create_client, Client
 
 from authenticate import Authenticate
 
-from datetime import datetime
-
 import os
 
 import pandas as pd
 
-import plotly.express as px
-
-st.set_page_config(layout="wide", page_title="📊_Explorador")
+st.set_page_config(layout="wide", page_title="🔎_Explorador")
 
 url: str = os.getenv("SUPABASE_URL")
 key: str = os.getenv("SUPABASE_KEY")
