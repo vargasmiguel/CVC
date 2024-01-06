@@ -177,26 +177,24 @@ class Authenticate:
             raise ValueError("Location must be one of 'main' or 'sidebar'")
         if location == 'main':
             if st.button(button_name):
-                self.refresh = self.cookie_manager.get("provider")
-                if self.refresh is not None:
-                    st.write(self.refresh)
-                    self.supabase.auth.refresh_session(self.refresh)
-                    self.supabase.auth.sign_out()
-                    self.cookie_manager.delete("provider", key="del_prov")
+                #self.refresh = self.cookie_manager.get("provider")
+                #if self.refresh is not None:
+                #    st.write(self.refresh)
+                #    self.supabase.auth.refresh_session(self.refresh)
+                #    self.supabase.auth.sign_out()
+                #    self.cookie_manager.delete("provider", key="del_prov")
+                self.supabase.auth.sign_out()
                 st.session_state['logout'] = True
                 st.session_state['email'] = None
                 st.session_state['authentication_status'] = None
-                st.session_state['provider'] = None
+                #st.session_state['provider'] = None
                 self.cookie_manager.delete(self.cookie_name)
         elif location == 'sidebar':  
             if st.sidebar.button(button_name):
                 self.refresh = self.cookie_manager.get("provider")
                 if self.refresh is not None:
-                    try:
-                        self.supabase.auth.refresh_session(self.refresh)
-                        self.supabase.auth.sign_out()
-                    except:
-                        None
+                    self.supabase.auth.refresh_session(self.refresh)
+                    self.supabase.auth.sign_out()
                     self.cookie_manager.delete("provider", key="del_prov")
                 st.session_state['logout'] = True
                 st.session_state['email'] = None
