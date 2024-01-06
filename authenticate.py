@@ -182,7 +182,7 @@ class Authenticate:
                 #    st.write(self.refresh)
                 #    self.supabase.auth.refresh_session(self.refresh)
                 #    self.supabase.auth.sign_out()
-                #    self.cookie_manager.delete("provider", key="del_prov")
+                self.cookie_manager.delete("provider", key="del_prov")
                 self.supabase.auth.sign_out()
                 st.session_state['logout'] = True
                 st.session_state['email'] = None
