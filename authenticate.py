@@ -82,10 +82,10 @@ class Authenticate:
             self.exp_date = datetime.fromtimestamp(user_check.session.expires_at)
             self.token = user_check.session.access_token
             self.refresh=user_check.session.refresh_token
-            sleep(0.01)
+            #sleep(0.01)
             self.cookie_manager.set(self.cookie_name, self.token,
                 expires_at=self.exp_date)
-            sleep(0.01)
+            #sleep(0.01)
             self.cookie_manager.set("provider", self.refresh, key="refresh2")
             st.session_state['authentication_status'] = True
         except:
@@ -184,12 +184,12 @@ class Authenticate:
                 #    self.supabase.auth.refresh_session(self.refresh)
                 #    self.supabase.auth.sign_out()
                 self.cookie_manager.delete("provider", key="del_prov")
+                self.cookie_manager.delete(self.cookie_name)
                 self.supabase.auth.sign_out()
                 st.session_state['logout'] = True
                 st.session_state['email'] = None
                 st.session_state['authentication_status'] = None
                 st.session_state['provider'] = None
-                self.cookie_manager.delete(self.cookie_name)
         elif location == 'sidebar':  
             if st.sidebar.button(button_name):
                 self.refresh = self.cookie_manager.get("provider")
