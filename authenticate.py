@@ -61,7 +61,7 @@ class Authenticate:
         #     except:
         #         st.session_state['provider'] = False
         self.token = self.cookie_manager.get(self.cookie_name)
-        sleep(1)
+        sleep(2)
         if self.token is not None:
             self.token = jwt.decode(self.token, options={"verify_signature": False})
             if self.token is not False:
