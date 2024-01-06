@@ -82,10 +82,10 @@ class Authenticate:
             self.exp_date = datetime.fromtimestamp(user_check.session.expires_at)
             self.token = user_check.session.access_token
             self.refresh=user_check.session.refresh_token
-            sleep(0.01)
+            #sleep(0.01)
             self.cookie_manager.set(self.cookie_name, self.token,
                 expires_at=self.exp_date)
-            sleep(0.01)
+            #sleep(0.01)
             self.cookie_manager.set("provider", self.refresh, key="refresh2")
             st.session_state['authentication_status'] = True
         except:
