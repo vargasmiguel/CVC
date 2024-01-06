@@ -179,6 +179,7 @@ class Authenticate:
             if st.button(button_name):
                 self.refresh = self.cookie_manager.get("provider")
                 if self.refresh is not None:
+                    st.write(self.refresh)
                     self.supabase.auth.refresh_session(self.refresh)
                     self.supabase.auth.sign_out()
                     self.cookie_manager.delete("provider", key="del_prov")
@@ -191,8 +192,11 @@ class Authenticate:
             if st.sidebar.button(button_name):
                 self.refresh = self.cookie_manager.get("provider")
                 if self.refresh is not None:
-                    self.supabase.auth.refresh_session(self.refresh)
-                    self.supabase.auth.sign_out()
+                    try:
+                        self.supabase.auth.refresh_session(self.refresh)
+                        self.supabase.auth.sign_out()
+                    except:
+                        None
                     self.cookie_manager.delete("provider", key="del_prov")
                 st.session_state['logout'] = True
                 st.session_state['email'] = None
