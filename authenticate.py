@@ -188,7 +188,7 @@ class Authenticate:
                 st.session_state['logout'] = True
                 st.session_state['email'] = None
                 st.session_state['authentication_status'] = None
-                #st.session_state['provider'] = None
+                st.session_state['provider'] = None
                 self.cookie_manager.delete(self.cookie_name)
         elif location == 'sidebar':  
             if st.sidebar.button(button_name):
